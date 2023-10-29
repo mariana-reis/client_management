@@ -16,7 +16,6 @@
                             <x-badge wire:model="totalClients" lg icon="clipboard-list" cyan label="Total de Clientes Cadastrados: {{ $totalClients }}" />
                         </div>
                     </div>
-                    <div class="vertical-line"></div>
                     @include('components.form')
                 </div>
             </div>
