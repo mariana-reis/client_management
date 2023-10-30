@@ -29,8 +29,9 @@
                     <td class="px-6 py-4">{{ $client->area_atuacao_cnae }}</td>
                     <td class="px-6 py-4">{{ $client->quadro_societario }}</td>
                     <td class="px-6 py-4 fixed-action-column space-y-4">
-                        <x-button wire:click="edit({{ $client->id }})"  xs icon="pencil" primary label="Editar" class="mr-2" />
-                        <x-button wire:click="remove({{ $client->id }})" xs icon="x" negative label="Excluir" />
+                        <x-button wire:click="view({{ $client->id }})" xs icon="eye" secondary label="Visualizar" class="w-full" />
+                        <x-button wire:click="edit({{ $client->id }})"  xs icon="pencil" primary label="Editar" class="w-full" />
+                        <x-button wire:click="remove({{ $client->id }})" xs icon="x" negative label="Excluir" class="w-full" />
                     </td>
                 </tr>
             @endforeach
@@ -40,6 +41,8 @@
 <div class="flex justify-end">
     {!! $this->client->links() !!}
 </div>
+
+@include('components.modal-view')
 
 <style>
 .fixed-action-column {
