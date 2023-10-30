@@ -44,18 +44,19 @@ class SearchCnpj extends Component
             ->orWhere('email', $this->data['email'])
             ->first();
 
-        if ($existingClient) {
+        if ($existingClient && !$this->isEditing) {
             $this->showNotification('Erro ao Salvar', 'Cliente já existe com o mesmo CNPJ ou e-mail.', 'error');
             return;
         }
 
-        ClientStoreAction::save($this->data);
-
         if ($this->isEditing) {
+            $existingClient->update($this->data);
             $this->showNotification('Edição de Cliente', 'Cliente atualizado com sucesso');
         } else {
+            ClientStoreAction::save($this->data);
             $this->showNotification('Criação de Cliente', 'Cliente criado com sucesso');
         }
+
 
         $this->resetExcept('clients');
     }
