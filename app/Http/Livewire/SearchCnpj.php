@@ -25,8 +25,9 @@ class SearchCnpj extends Component
     public array $data = [];
     public string $search = '';
     public bool $isEditing = false;
+    public $showClientModal = false;
     public $totalClients;
-
+    public $selectedClient;
     protected $queryString = ['search'];
 
     public function updated(string $key, string $value): void
@@ -77,6 +78,18 @@ class SearchCnpj extends Component
         $this->showNotification('Exclusão de Cliente', 'Cliente excluido com sucesso');
     }
 
+    public function view(string $id): void
+    {
+        $this->selectedClient = Client::find($id);
+
+        $this->showClientModal = true;
+    }
+
+    public function closeClientModal()
+    {
+        $this->showClientModal = false;
+    }
+
     public function getTotalClients(): int
     {
         return Client::count();
@@ -119,6 +132,7 @@ class SearchCnpj extends Component
     {
         $this->data = ClientGetPropertiesAction::getEmptyProperties();
         $this->totalClients = $this->getTotalClients();
+        $this->showClientModal = false;
     }
 
     public function render(): Factory|View|Application
