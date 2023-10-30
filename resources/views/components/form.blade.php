@@ -5,7 +5,7 @@
             <x-input wire:model.lazy="data.cnpj" label="CNPJ" placeholder="Informe o CNPJ" />
         </div>
         <div class="md:col-span-2 m-5">
-            <x-button wire:click="searchClient" spinner primary md icon="search" label="Buscar CNPJ" />
+            <x-button wire:click="searchClient" spinner="searchClient" primary md icon="search" label="Buscar CNPJ" />
         </div>
         <div class="md:col-span-3">
             <x-input wire:model="data.nome_fantasia" label="Nome Fantasia" placeholder="Informe o Nome Fantasia" />
